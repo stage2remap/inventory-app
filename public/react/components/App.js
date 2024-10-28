@@ -11,9 +11,10 @@ export const App = () => {
 
 	async function fetchItems() {
 		try {
-			const response = await fetch(`${apiURL}/items`);
+			const response = await fetch(`http://localhost:3000/api/items`);
 			const itemsData = await response.json();
 			setItems(Array.isArray(itemsData) ? itemsData : []); // Ensure itemsData is an array
+			console.log(itemsData)
 		} catch (err) {
 			console.log("Oh no an error! ", err);
 			setItems([]); // Set items to an empty array on error
@@ -27,8 +28,9 @@ export const App = () => {
 
 	return (
 		<main>	
-      <h1>Car Store</h1>
+      <h1>Car Store hi</h1>
 			<h2>All things 🔥</h2>
+			<h1>test</h1>
 			<ItemsList items={items} />
 		</main>
 	)

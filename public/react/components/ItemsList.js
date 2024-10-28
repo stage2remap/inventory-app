@@ -9,6 +9,7 @@ export const ItemsList = ({ items = [] }) => {
                     <Item item={item} />
                 </div>
             ))}
+            <h1>Hi</h1>
         </>
     );
 };
