@@ -9,16 +9,17 @@ export const App = () => {
 
 	const [items, setItems] = useState([]);
 
-	async function fetchItems(){
+	async function fetchItems() {
 		try {
 			const response = await fetch(`${apiURL}/items`);
 			const itemsData = await response.json();
-			
-			setItems(itemsData);
+			setItems(Array.isArray(itemsData) ? itemsData : []); // Ensure itemsData is an array
 		} catch (err) {
-			console.log("Oh no an error! ", err)
+			console.log("Oh no an error! ", err);
+			setItems([]); // Set items to an empty array on error
 		}
 	}
+	
 
 	useEffect(() => {
 		fetchItems();
