@@ -14,6 +14,7 @@ export const App = () => {
     const [items, setItems] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
     const [sortCriterion, setSortCriterion] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     async function fetchItems() {
         try {
@@ -52,7 +53,11 @@ export const App = () => {
         setSortCriterion(e.target.value);
     };
 
-    // Function to sort items based on selected criterion
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    // Sort items function for the main inventory
     const sortedItems = () => {
         if (!sortCriterion) return items;
 
@@ -68,7 +73,6 @@ export const App = () => {
 
     return (
         <Router>
-            {/* Move useLocation inside the Router */}
             <MainContent
                 items={items}
                 selectedItem={selectedItem}
@@ -78,12 +82,13 @@ export const App = () => {
                 addCar={addCar}
                 sortCriterion={sortCriterion}
                 handleSortChange={handleSortChange}
+                searchQuery={searchQuery}
+                handleSearchChange={handleSearchChange}
             />
         </Router>
     );
 };
 
-// Separate component for main content
 const MainContent = ({
     items,
     selectedItem,
@@ -93,13 +98,14 @@ const MainContent = ({
     addCar,
     sortCriterion,
     handleSortChange,
+    searchQuery,
+    handleSearchChange
 }) => {
     const location = useLocation();
     const shouldUseGreyBackground = ["/items", "/search", "/manage", "/reviews"].includes(location.pathname);
 
     return (
         <div className={shouldUseGreyBackground ? 'grey-background' : ''}>
-            {/* Navbar */}
             <nav>
                 <Link to="/items">Inventory</Link>
                 <Link to="/search">Search</Link>
@@ -107,11 +113,8 @@ const MainContent = ({
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
             </nav>
-
-            {/* Conditionally render Sort Dropdown only on the /items route */}
             <SortDropdown conditionPath="/items" sortCriterion={sortCriterion} handleSortChange={handleSortChange} />
 
-            {/* Routes */}
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/items" element={
@@ -132,7 +135,16 @@ const MainContent = ({
                         <ItemsList items={sortedItems()} onItemClick={handleItemClick} />
                     )
                 } />
-                <Route path="/search" element={<Search />} />
+                <Route path="/search" element={
+                <Search 
+                    items={items}                                  // original prop
+                    searchQuery={searchQuery}                      // original prop
+                    handleSearchChange={handleSearchChange}        // original prop
+                    handleItemClick={handleItemClick}              // <--- added prop
+                    selectedItem={selectedItem}                    // <--- added prop
+                    handleBackClick={handleBackClick}              // <--- added prop
+                />} 
+            />
                 <Route path="/manage" element={<ManageCars addCar={addCar} />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/reviews" element={<Reviews />} />
@@ -141,6 +153,7 @@ const MainContent = ({
     );
 };
 
+// Definition for SortDropdown component
 const SortDropdown = ({ conditionPath, sortCriterion, handleSortChange }) => {
     const location = useLocation();
     return location.pathname === conditionPath ? (
