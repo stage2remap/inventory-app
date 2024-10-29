@@ -1,15 +1,15 @@
 /* ItemsList.css */
 .items-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
-    justify-content: center;
-  }
-  
-  .item-card {
-    flex: 1 1 200px;
-    max-width: 300px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  background-color: #f5f5f5; /* Light grey background */
+}
+
+.item-card {
+  flex: 1 1 200px;
+  max-width: 300px;
+  cursor: pointer;
+}
