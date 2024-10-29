@@ -62,7 +62,7 @@ module.exports = {
         bhp: 550,
         raaminess: 5,
         description: "A true JDM legend with iconic styling and race-bred performance. Highly sought after and perfect for collectors and enthusiasts alike.",
-        image: "",
+        image: "https://cdn.motor1.com/images/mgl/P3nO74/s1/2000-nissan-skyline-r34-gt-r-by-kaizo-industries-driven-by-paul-walker-in-fast-and-furious-bonham-s-auction.jpg",
         price: 120000
       },
       {
