@@ -50,7 +50,7 @@ module.exports = {
         bhp: 591,
         raaminess: 5,
         description: "A blend of performance and practicality, with a roaring V8 and all-wheel drive. The ultimate high-performance wagon.",
-        image: "https://imagedelivery.net/ePR8PyKf84wPHx7_RYmEag/587ca961-1165-4e36-e145-7ef547f9fe00/86+",
+        image: "https://www.europeanprestige.co.uk/blobs/stock/83/images/b441b02a-b5ff-4c1b-95f2-abac6a6e4718/1j6a1829.jpg?width=2000&height=1333",
         price: 90000
       },
       {
