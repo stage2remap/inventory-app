@@ -22,6 +22,15 @@ export const App = () => {
             setItems([]);
         }
     }
+    async function addCar(car){
+        await fetch(`http://localhost:3000/api/items`,{
+            method: 'POST',
+            body: JSON.stringify(car),
+            headers:{
+                'Content-type': 'application/json'
+            }
+        })
+    }
 
     useEffect(() => {
         fetchItems();
@@ -66,7 +75,7 @@ export const App = () => {
                     )
                 } />
                 <Route path="/search" element={<Search />} />
-                <Route path="/manage" element={<ManageCars />} />
+                <Route path="/manage" element={<ManageCars addCar = {addCar}/>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/reviews" element={<Reviews />} />
             </Routes>
