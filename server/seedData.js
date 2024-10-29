@@ -14,7 +14,7 @@ module.exports = {
         bhp: 500,
         raaminess: 5,
         description: "High-performance compact beast with incredible power, stage 2 tuned to perfection. Aggressive handling and luxurious interior.",
-        image: "",
+        image: "https://i.pinimg.com/originals/df/fc/16/dffc160115f2a332acb6d9b06cbdd481.jpg",
         price: 65000
       },
       {
@@ -26,7 +26,7 @@ module.exports = {
         bhp: 430,
         raaminess: 4,
         description: "A compact powerhouse with rear-wheel drive and turbocharged engine. The perfect blend of daily drivability and raw power.",
-        image: "",
+        image: "https://scotthelme.co.uk/content/images/2022/07/OOO_0915-1.jpeg",
         price: 45000
       },
       {
@@ -38,7 +38,7 @@ module.exports = {
         bhp: 503,
         raaminess: 5,
         description: "An iconic high-performance sedan with incredible power, agility, and aggressive styling. Perfect for enthusiasts seeking luxury and speed.",
-        image: "",
+        image: "https://www.topgear.com/sites/default/files/2022/08/MANHART-MH3-GTR-Website-1.jpg",
         price: 70000
       },
       {
@@ -50,7 +50,7 @@ module.exports = {
         bhp: 591,
         raaminess: 5,
         description: "A blend of performance and practicality, with a roaring V8 and all-wheel drive. The ultimate high-performance wagon.",
-        image: "",
+        image: "https://imagedelivery.net/ePR8PyKf84wPHx7_RYmEag/587ca961-1165-4e36-e145-7ef547f9fe00/86+",
         price: 90000
       },
       {
@@ -74,7 +74,7 @@ module.exports = {
         bhp: 640,
         raaminess: 5,
         description: "The benchmark for sports cars, offering unparalleled acceleration and handling. Pure luxury with an adrenaline-pumping drive.",
-        image: "",
+        image: "https://www.topgear.com/sites/default/files/2023/04/image.jpg",
         price: 180000
       },
       {
@@ -86,7 +86,7 @@ module.exports = {
         bhp: 405,
         raaminess: 4,
         description: "Compact, rear-wheel drive fun with a powerful inline-six engine. A favorite among performance purists for its handling and agility.",
-        image: "",
+        image: "https://mediapool.bmwgroup.com/cache/P9/201803/P90298653/P90298653-the-new-bmw-m2-competition-04-2018-600px.jpg",
         price: 60000
       },
       {
@@ -98,11 +98,11 @@ module.exports = {
         bhp: 349,
         raaminess: 3,
         description: "Sleek and sophisticated with the perfect balance of performance and comfort. Great for both daily commutes and spirited drives.",
-        image: "",
+        image: "https://i.ytimg.com/vi/Y0vzPDcz6I8/maxresdefault.jpg",
         price: 55000
       },
       {
-        color: "Jet Black",
+        color: "Canary Yellow",
         year: 2020,
         mileage: 25000,
         make: "Mercedes-Benz",
@@ -110,7 +110,7 @@ module.exports = {
         bhp: 503,
         raaminess: 4,
         description: "Aggressive and stylish, with a V8 engine that offers exhilarating speed. A car that makes a bold statement.",
-        image: "",
+        image: "https://preview.redd.it/mercedes-benz-c63-amg-black-series-v0-fyyaaurry7ld1.jpg?width=640&crop=smart&auto=webp&s=e13bba1683169c18d35c3d8407f5aca3387aba55",
         price: 70000
       },
       {
@@ -122,8 +122,44 @@ module.exports = {
         bhp: 450,
         raaminess: 4,
         description: "Refined power in a stylish coupe. The RS5 brings luxury, performance, and a refined driving experience.",
-        image: "",
+        image: "https://cdn.uk.prod.group-mobility-trader.com/images/cas/009baf221d90104b3e90f01f96c507f0/7db08b8628388d5ff1a9d9265cc376a5.jpg",
         price: 85000
-      }    
+      },   
+      {
+        color: "Yaaara Purple ennih",
+        year: 1997,
+        mileage: 500000,
+        make: "Raamiyota",
+        model: "Yaaarais",
+        bhp: 50,
+        raaminess: 5,
+        description: "Yaara this yaaris moves cuz, 60 miles per hour second gear, fast as f***.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj75INosInz3f91WGwzrcZWOOmjOrEZbXXdA&s",
+        price: 850000
+      },
+      {
+        color: "Badman Blue",
+        year: 1999,
+        mileage: 69420,
+        make: "Vokky",
+        model: "Cursa",
+        bhp: 75,
+        raaminess: 5,
+        description: "Imagine it, you the Mrs doing laps around Great Horton Road Maccies. Everyone and their Chachas will be jealous",
+        image: "https://i.redd.it/fluqjs9bjsw71.jpg",
+        price: 500000
+      },   
+      {
+        color: "Vomit",
+        year: 2006,
+        mileage: 1000000,
+        make: "Honda BRAAT BRAAT",
+        model: "Jizz",
+        bhp: 25,
+        raaminess: 5,
+        description: "The peak of UberEats. This bespoke vehicle is meant for only the most serious of Chaudaries going on late night missions, PATAYNAAAA YAARA",
+        image: "https://www.fitfreak.net/gallery/albums/userpics/10006/asdimage004.jpg",
+        price: 500
+      } 
  ]
 };
