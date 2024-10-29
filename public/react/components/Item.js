@@ -3,8 +3,7 @@ import React from 'react';
 export const Item = (props) => {
 
   return <>
-    <h3>{props.item.make} 
-      {props.item.model}
+    <h3><span>{props.item.make}</span> <span>{props.item.model}</span>
     </h3>
   </>
 } 
