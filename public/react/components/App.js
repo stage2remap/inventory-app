@@ -21,18 +21,19 @@ export const App = () => {
             const itemsData = await response.json();
             setItems(Array.isArray(itemsData) ? itemsData : []);
         } catch (err) {
-            console.log("Oh no, an error! ", err);
+            console.error("Oh no, an error! ", err);
             setItems([]);
         }
     }
-    async function addCar(car){
-        await fetch(`http://localhost:3000/api/items`,{
+
+    async function addCar(car) {
+        await fetch(`http://localhost:3000/api/items`, {
             method: 'POST',
             body: JSON.stringify(car),
-            headers:{
+            headers: {
                 'Content-type': 'application/json'
             }
-        })
+        });
     }
 
     useEffect(() => {
@@ -67,6 +68,37 @@ export const App = () => {
 
     return (
         <Router>
+            {/* Move useLocation inside the Router */}
+            <MainContent
+                items={items}
+                selectedItem={selectedItem}
+                handleItemClick={handleItemClick}
+                handleBackClick={handleBackClick}
+                sortedItems={sortedItems}
+                addCar={addCar}
+                sortCriterion={sortCriterion}
+                handleSortChange={handleSortChange}
+            />
+        </Router>
+    );
+};
+
+// Separate component for main content
+const MainContent = ({
+    items,
+    selectedItem,
+    handleItemClick,
+    handleBackClick,
+    sortedItems,
+    addCar,
+    sortCriterion,
+    handleSortChange,
+}) => {
+    const location = useLocation();
+    const shouldUseGreyBackground = ["/items", "/search", "/manage", "/reviews"].includes(location.pathname);
+
+    return (
+        <div className={shouldUseGreyBackground ? 'grey-background' : ''}>
             {/* Navbar */}
             <nav>
                 <Link to="/items">Inventory</Link>
@@ -101,11 +133,11 @@ export const App = () => {
                     )
                 } />
                 <Route path="/search" element={<Search />} />
-                <Route path="/manage" element={<ManageCars addCar = {addCar}/>} />
+                <Route path="/manage" element={<ManageCars addCar={addCar} />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/reviews" element={<Reviews />} />
             </Routes>
-        </Router>
+        </div>
     );
 };
 
