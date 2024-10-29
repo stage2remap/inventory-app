@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ItemsList } from './ItemsList';
 import { LandingPage } from './LandingPage';
+import { Search } from './Search';
+import { ManageCars } from './ManageCars';
+import { About } from './About';
+import { Reviews } from './Reviews';
 import apiURL from '../api';
 
 export const App = () => {
@@ -12,10 +16,10 @@ export const App = () => {
         try {
             const response = await fetch(`${apiURL}/items`);
             const itemsData = await response.json();
-            setItems(Array.isArray(itemsData) ? itemsData : []); // Ensure itemsData is an array
+            setItems(Array.isArray(itemsData) ? itemsData : []);
         } catch (err) {
             console.log("Oh no, an error! ", err);
-            setItems([]); // Set items to an empty array on error
+            setItems([]);
         }
     }
 
@@ -61,6 +65,10 @@ export const App = () => {
                         <ItemsList items={items} onItemClick={handleItemClick} />
                     )
                 } />
+                <Route path="/search" element={<Search />} />
+                <Route path="/manage" element={<ManageCars />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/reviews" element={<Reviews />} />
             </Routes>
         </Router>
     );
