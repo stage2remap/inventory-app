@@ -7,6 +7,7 @@ import { ManageCars } from './ManageCars';
 import { About } from './About';
 import { Reviews } from './Reviews';
 import apiURL from '../api';
+import './nb.css';
 
 export const App = () => {
     const [items, setItems] = useState([]);
@@ -37,6 +38,7 @@ export const App = () => {
 
     return (
         <Router>
+            {/* Navbar */}
             <nav>
                 <Link to="/items">Inventory</Link>
                 <Link to="/search">Search</Link>
@@ -44,6 +46,8 @@ export const App = () => {
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
             </nav>
+
+            {/* Routes */}
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/items" element={
