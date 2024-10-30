@@ -35,6 +35,19 @@ export const App = () => {
                 'Content-type': 'application/json'
             }
         });
+        fetchItems()
+        alert("Car added successfully!")
+    }
+
+    async function deleteCar(car){
+        await fetch(`http://localhost:3000/api/items/${car.id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+        handleBackClick()
+        fetchItems()
     }
 
     useEffect(() => {
@@ -84,6 +97,7 @@ export const App = () => {
                 handleSortChange={handleSortChange}
                 searchQuery={searchQuery}
                 handleSearchChange={handleSearchChange}
+                deleteCar = {deleteCar}
             />
         </Router>
     );
@@ -99,7 +113,8 @@ const MainContent = ({
     sortCriterion,
     handleSortChange,
     searchQuery,
-    handleSearchChange
+    handleSearchChange,
+    deleteCar
 }) => {
     const location = useLocation();
     const shouldUseGreyBackground = ["/items", "/search", "/manage", "/reviews"].includes(location.pathname);
@@ -130,6 +145,7 @@ const MainContent = ({
                             <p><strong>Price:</strong> ${selectedItem.price}</p>
                             <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width="300" />
                             <button onClick={handleBackClick}>Back to list</button>
+                            <button onClick ={()=>deleteCar(selectedItem)}> Delete Car</button>
                         </div>
                     ) : (
                         <ItemsList items={sortedItems()} onItemClick={handleItemClick} />
