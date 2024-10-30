@@ -20,7 +20,7 @@
 .about-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #00ccff; /* Neon blue color */
+    color: #000000; /* Neon blue color */
     text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #00ccff; /* Glowing effect */
     margin-bottom: 0.5rem;
 }
@@ -28,7 +28,7 @@
 .about-description {
     font-size: 1.5rem;
     line-height: 1.6;
-    color: #00ccff; /* Neon blue color */
+    color: #ffffff; /* Neon blue color */
     text-shadow: 0 0 8px #00ccff, 0 0 16px #00ccff, 0 0 24px #00ccff; /* Glowing effect */
     max-width: 800px;
 }

@@ -12,10 +12,12 @@ import './nb.css';
 
 export const App = () => {
     const [items, setItems] = useState([]);
+    const [reviews, setReviews] = useState([]); // State for reviews
     const [selectedItem, setSelectedItem] = useState(null);
     const [sortCriterion, setSortCriterion] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
+    // Fetch items
     async function fetchItems() {
         try {
             const response = await fetch(`${apiURL}/items`);
@@ -27,6 +29,7 @@ export const App = () => {
         }
     }
 
+    // Add a car
     async function addCar(car) {
         await fetch(`http://localhost:3000/api/items`, {
             method: 'POST',
@@ -35,23 +38,52 @@ export const App = () => {
                 'Content-type': 'application/json'
             }
         });
-        fetchItems()
-        alert("Car added successfully!")
+        fetchItems();
+        alert("Car added successfully!");
     }
 
-    async function deleteCar(car){
-        await fetch(`http://localhost:3000/api/items/${car.id}`,{
+    // Delete a car
+    async function deleteCar(car) {
+        await fetch(`http://localhost:3000/api/items/${car.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json'
             }
         });
-        handleBackClick()
-        fetchItems()
+        handleBackClick();
+        fetchItems();
+    }
+
+    // Fetch reviews
+    async function fetchReviews() {
+        try {
+            const response = await fetch(`http://localhost:3000/api/reviews`);
+            const reviewsData = await response.json();
+            setReviews(Array.isArray(reviewsData) ? reviewsData : []);
+        } catch (err) {
+            console.error("Error fetching reviews:", err);
+            setReviews([]);
+        }
+    }
+
+    // Add a new review
+    async function addReview(newReview) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/reviews`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newReview),
+            });
+            const addedReview = await response.json();
+            setReviews([...reviews, addedReview]);
+        } catch (error) {
+            console.error("Error adding review:", error);
+        }
     }
 
     useEffect(() => {
         fetchItems();
+        fetchReviews(); // Fetch reviews on component mount
     }, []);
 
     const handleItemClick = (item) => {
@@ -97,7 +129,9 @@ export const App = () => {
                 handleSortChange={handleSortChange}
                 searchQuery={searchQuery}
                 handleSearchChange={handleSearchChange}
-                deleteCar = {deleteCar}
+                deleteCar={deleteCar}
+                reviews={reviews}         // Pass reviews to MainContent
+                addReview={addReview}      // Pass addReview function to MainContent
             />
         </Router>
     );
@@ -114,7 +148,9 @@ const MainContent = ({
     handleSortChange,
     searchQuery,
     handleSearchChange,
-    deleteCar
+    deleteCar,
+    reviews,
+    addReview
 }) => {
     const location = useLocation();
     const shouldUseGreyBackground = ["/items", "/search", "/manage", "/reviews"].includes(location.pathname);
@@ -145,25 +181,25 @@ const MainContent = ({
                             <p><strong>Price:</strong> ${selectedItem.price}</p>
                             <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width="300" />
                             <button onClick={handleBackClick}>Back to list</button>
-                            <button onClick ={()=>deleteCar(selectedItem)}> Delete Car</button>
+                            <button onClick={() => deleteCar(selectedItem)}> Delete Car</button>
                         </div>
                     ) : (
                         <ItemsList items={sortedItems()} onItemClick={handleItemClick} />
                     )
                 } />
                 <Route path="/search" element={
-                <Search 
-                    items={items}                                  // original prop
-                    searchQuery={searchQuery}                      // original prop
-                    handleSearchChange={handleSearchChange}        // original prop
-                    handleItemClick={handleItemClick}              // <--- added prop
-                    selectedItem={selectedItem}                    // <--- added prop
-                    handleBackClick={handleBackClick}              // <--- added prop
-                />} 
-            />
+                    <Search 
+                        items={items}
+                        searchQuery={searchQuery}
+                        handleSearchChange={handleSearchChange}
+                        handleItemClick={handleItemClick}
+                        selectedItem={selectedItem}
+                        handleBackClick={handleBackClick}
+                    />
+                } />
                 <Route path="/manage" element={<ManageCars addCar={addCar} />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/reviews" element={<Reviews />} />
+                <Route path="/reviews" element={<Reviews reviews={reviews} addReview={addReview} />} />
             </Routes>
         </div>
     );
