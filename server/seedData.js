@@ -5,9 +5,9 @@ module.exports = {
     {"name" : "Tobasco", "image": "https://64.media.tumblr.com/1564fcf74adc3fe6542c34b6a1f05de1/tumblr_na9lew0bNS1tha1vgo1_r1_250.gif"}
   ],
   reviews: [
-    { name: 'Alice', rating: 5, comment: 'Great service and amazing selection!' },
-    { name: 'Bob', rating: 4, comment: 'Good prices, but could have more options.' },
-    { name: 'Charlie', rating: 3, comment: 'Average experience overall.' }
+    { name: 'George Rodgers', rating: 5, comment: 'BLACK LAMBORGHINI, BLACK LAMBORGHINI, PEOPLE I KNOW YOU SEE ME IN MY LAMBORGHINI!' },
+    { name: 'Benjamin "Raami" Watkins', rating: 4, comment: 'Active people, raami ghaddis, what more could a young brother patrolling the streets of BD need, recommended to all my chahchas!!' },
+    { name: 'Haami Nyangibo', rating: 3, comment: 'Average experience overall, needs more workshop space and less useless bruddas.' }
   ],
   items: [
       {
@@ -79,7 +79,7 @@ module.exports = {
         bhp: 640,
         raaminess: 5,
         description: "The benchmark for sports cars, offering unparalleled acceleration and handling. Pure luxury with an adrenaline-pumping drive.",
-        image: "https://www.topgear.com/sites/default/files/2023/04/image.jpg",
+        image: "https://cdn.elferspot.com/wp-content/uploads/2021/12/Porsche-911-Carrera-S-Cabriolet-991-II-kaufen-gebraucht-Deutschland-01.jpeg",
         price: 180000
       },
       {
