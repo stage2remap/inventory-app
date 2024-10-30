@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Review } = require('../models');
 
-// Route to fetch all reviews
+//GET All Reviews
 router.get('/', async (req, res) => {
     try {
         const reviews = await Review.findAll();
@@ -12,7 +12,9 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Route to post a new review
+
+
+//POST New Review
 router.post('/', async (req, res) => {
     const { name, rating, comment } = req.body;
     try {

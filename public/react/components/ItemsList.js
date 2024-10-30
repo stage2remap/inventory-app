@@ -1,7 +1,6 @@
-// ItemsList.js
 import React from 'react';
 import { Item } from './Item';
-import './ItemsList.css';
+import './Style/ItemsList.css';
 
 export const ItemsList = ({ items, onItemClick }) => {
   return (

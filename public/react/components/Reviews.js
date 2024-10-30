@@ -1,6 +1,5 @@
-// Reviews.js
 import React, { useState } from 'react';
-import './Reviews.css';
+import './Style/Reviews.css';
 
 export const Reviews = ({ reviews, addReview }) => {
     const [newReview, setNewReview] = useState({ name: '', rating: 0, comment: '' });

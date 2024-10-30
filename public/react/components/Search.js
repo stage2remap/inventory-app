@@ -1,9 +1,9 @@
-// Search.js
 import React from 'react';
 import { ItemsList } from './ItemsList';
+import './Style/SelectedItem.css';
 
 export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick, selectedItem, handleBackClick }) => {
-    // Filter items based on search query
+    
     const filteredItems = items.filter(item =>
         item.make.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -13,15 +13,18 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
 
     return (
         <div>
-            <h2>Search Cars</h2>
-            <input
-                type="text"
-                placeholder="Search by make, model, year, or description"
-                value={searchQuery}
-                onChange={handleSearchChange}
-            />
+            <h2 className="search-title">Search Cars</h2>
+            <div className="search-bar-container">
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search by make, model, year, or description"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                />
+            </div>
             {selectedItem ? (
-                <div>
+                <div className="selected-item-container">
                     <h3>{selectedItem.make} - {selectedItem.model}</h3>
                     <p><strong>ID:</strong> {selectedItem.id}</p>
                     <p><strong>Year:</strong> {selectedItem.year}</p>
@@ -29,9 +32,11 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
                     <p><strong>BHP:</strong> {selectedItem.bhp}</p>
                     <p><strong>Raaminess:</strong> {selectedItem.raaminess}/5</p>
                     <p><strong>Description:</strong> {selectedItem.description}</p>
-                    <p><strong>Price:</strong> ${selectedItem.price}</p>
-                    <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width="300" />
-                    <button onClick={handleBackClick}>Back to search results</button>
+                    <p><strong>Price:</strong> £{selectedItem.price}</p>
+                    <p><strong>Color:</strong> {selectedItem.color}</p>
+                    <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
+                    <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} />
+                    <button onClick={handleBackClick}>Back to list</button>
                 </div>
             ) : (
                 <ItemsList items={filteredItems} onItemClick={handleItemClick} />

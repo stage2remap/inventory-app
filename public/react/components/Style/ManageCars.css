@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('./ManageCars.jpg');
+    background-image: url('../Images/ManageCars.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -90,22 +90,22 @@
     font-size: 1rem;
     font-weight: bold;
     color: #ffffff;
-    background: linear-gradient(90deg, #00ccff, #008fb3); /* Gradient background */
+    background: linear-gradient(90deg, #00ccff, #008fb3); 
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .manage-cars-wrapper .submit-button:hover {
-    background: linear-gradient(90deg, #008fb3, #005f80); /* Darker gradient on hover */
-    transform: translateY(-2px); /* Lift effect */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    background: linear-gradient(90deg, #008fb3, #005f80); 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); 
 }
 
 .manage-cars-wrapper .submit-button:active {
-    transform: translateY(1px); /* Pressed-down effect */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Slightly smaller shadow */
+    transform: translateY(1px); 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); 
 }
