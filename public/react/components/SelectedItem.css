@@ -1,0 +1,67 @@
+/* Container styling */
+.selected-item-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Title styling */
+.selected-item-container h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Text styling */
+.selected-item-container p {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.selected-item-container p strong {
+    color: #222;
+}
+
+/* Image styling */
+.selected-item-container img {
+    margin: 20px 0;
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+.selected-item-container button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.selected-item-container button:first-of-type {
+    background-color: #007bff;
+    color: white;
+}
+
+.selected-item-container button:first-of-type:hover {
+    background-color: #0056b3;
+}
+
+.selected-item-container button:last-of-type {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.selected-item-container button:last-of-type:hover {
+    background-color: #c0392b;
+}

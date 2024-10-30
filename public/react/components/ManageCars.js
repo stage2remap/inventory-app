@@ -51,7 +51,7 @@ export const ManageCars = ({ addCar }) => {
                 <h3>Add Car</h3>
                 <form onSubmit={handleSubmit} className="form-container">
                     <div className="form-group">
-                        <input type="text" placeholder="Color" value={color} onChange={(e) => setColor(e.target.value)} required />
+                        <input type="text" pattern="[A-Za-z]+" placeholder="Color" value={color} onChange={(e) => setColor(e.target.value)} required />
                         <input type="number" placeholder="Year" value={year} onChange={(e) => setYear(e.target.value)} required />
                         <input type="number" placeholder="Mileage" value={mileage} onChange={(e) => setMileage(e.target.value)} required />
                         <input type="text" placeholder="Make" value={make} onChange={(e) => setMake(e.target.value)} required />
