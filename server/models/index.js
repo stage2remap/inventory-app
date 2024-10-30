@@ -19,7 +19,14 @@ const Items = sequelize.define("items", {
   price: Sequelize.INTEGER,
 });
 
+const Review = sequelize.define("reviews", {
+  name: Sequelize.STRING,
+  rating: Sequelize.INTEGER,
+  comment: Sequelize.TEXT,
+});
+
+
 module.exports = {
   db: sequelize,
-  Sauce, Items,
+  Sauce, Items, Review
 };

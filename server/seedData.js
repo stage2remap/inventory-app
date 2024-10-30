@@ -4,6 +4,11 @@ module.exports = {
     {"name" : "Franks", "image": "https://cdn.streamelements.com/uploads/1887a0da-3642-4795-b5f5-774d5b377e52.gif"},
     {"name" : "Tobasco", "image": "https://64.media.tumblr.com/1564fcf74adc3fe6542c34b6a1f05de1/tumblr_na9lew0bNS1tha1vgo1_r1_250.gif"}
   ],
+  reviews: [
+    { name: 'Alice', rating: 5, comment: 'Great service and amazing selection!' },
+    { name: 'Bob', rating: 4, comment: 'Good prices, but could have more options.' },
+    { name: 'Charlie', rating: 3, comment: 'Average experience overall.' }
+  ],
   items: [
       {
         color: "Black",
