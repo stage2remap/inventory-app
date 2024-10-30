@@ -9,6 +9,7 @@ import { About } from './About';
 import { Reviews } from './Reviews';
 import apiURL from '../api';
 import './nb.css';
+import {SelectedItem} from './SelectedItem'
 
 export const App = () => {
     const [items, setItems] = useState([]);
@@ -16,6 +17,8 @@ export const App = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [sortCriterion, setSortCriterion] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
+    const [editCar, setEditCar] = useState(false)
+
 
     // Fetch items
     async function fetchItems() {
@@ -28,18 +31,40 @@ export const App = () => {
             setItems([]);
         }
     }
+    async function fetchItem(itemId) {
+        try {
+            console.log(itemId)
 
+            const response = await fetch(`http://localhost:3000/api/items/${itemId}`);
+            console.log("Fetch item id = ", itemId)
+            const updatedItem = await response.json();
+            console.log("updatedItem: ", updatedItem)
+            setSelectedItem(updatedItem); 
+        } catch (err) {
+            alert("Error fetching item", err);
+            setSelectedItem(null); 
+        }
+    }
+    
     // Add a car
     async function addCar(car) {
-        await fetch(`http://localhost:3000/api/items`, {
+        try{
+            await fetch(`http://localhost:3000/api/items`, {
             method: 'POST',
             body: JSON.stringify(car),
             headers: {
                 'Content-type': 'application/json'
             }
         });
-        fetchItems();
-        alert("Car added successfully!");
+        if(response.ok){
+            fetchItems();
+            alert("Car added successfully!")
+        }else{
+            alert("Error in adding car")
+        }}
+        catch(error) {
+            console.log("Error updating car:", error);
+        }
     }
 
     // Delete a car
@@ -53,6 +78,26 @@ export const App = () => {
         handleBackClick();
         fetchItems();
     }
+
+    async function updateCar(id, updatedData){
+       try {
+        const response = await fetch(`http://localhost:3000/api/items/${id}` ,{ 
+            method: 'PUT',
+            body: JSON.stringify(updatedData),
+            headers: {
+                'Content-type':'application/json'
+            }
+
+        });
+        if (response.ok) {
+
+            fetchItem(id)
+    }   else {
+            alert("Failed to update car");
+    }}catch (error) {
+        console.log("Error updating car:", error);
+    }
+}
 
     // Fetch reviews
     async function fetchReviews() {
@@ -91,7 +136,8 @@ export const App = () => {
     };
 
     const handleBackClick = () => {
-        setSelectedItem(null);
+        setSelectedItem(null)
+        fetchItems();
     };
 
     const handleSortChange = (e) => {
@@ -130,8 +176,13 @@ export const App = () => {
                 searchQuery={searchQuery}
                 handleSearchChange={handleSearchChange}
                 deleteCar={deleteCar}
-                reviews={reviews}         // Pass reviews to MainContent
-                addReview={addReview}      // Pass addReview function to MainContent
+                reviews={reviews}         
+                addReview={addReview} 
+                updateCar = {updateCar}
+                editCar = {editCar}
+                setEditCar = {setEditCar} 
+                useEffect = {useEffect}    
+                fetchItem = {fetchItem}
             />
         </Router>
     );
@@ -150,7 +201,11 @@ const MainContent = ({
     handleSearchChange,
     deleteCar,
     reviews,
-    addReview
+    addReview,
+    updateCar,
+    editCar,
+    setEditCar,
+    fetchItem
 }) => {
     const location = useLocation();
     const shouldUseGreyBackground = ["/items", "/search", "/manage", "/reviews"].includes(location.pathname);
@@ -170,19 +225,7 @@ const MainContent = ({
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/items" element={
                     selectedItem ? (
-                        <div>
-                            <h3>{selectedItem.make} - {selectedItem.model}</h3>
-                            <p><strong>ID:</strong> {selectedItem.id}</p>
-                            <p><strong>Year:</strong> {selectedItem.year}</p>
-                            <p><strong>Mileage:</strong> {selectedItem.mileage}</p>
-                            <p><strong>BHP:</strong> {selectedItem.bhp}</p>
-                            <p><strong>Raaminess:</strong> {selectedItem.raaminess}/5</p>
-                            <p><strong>Description:</strong> {selectedItem.description}</p>
-                            <p><strong>Price:</strong> ${selectedItem.price}</p>
-                            <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width="300" />
-                            <button onClick={handleBackClick}>Back to list</button>
-                            <button onClick={() => deleteCar(selectedItem)}> Delete Car</button>
-                        </div>
+                        <SelectedItem selectedItem = {selectedItem} handleBackClick={handleBackClick} deleteCar ={deleteCar} updateCar ={updateCar} editCar = {editCar} setEditCar={setEditCar} fetchItem={fetchItem} />
                     ) : (
                         <ItemsList items={sortedItems()} onItemClick={handleItemClick} />
                     )
