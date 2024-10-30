@@ -37,10 +37,11 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
             <p><strong>Price:</strong> £{selectedItem.price}</p>
             <p><strong>Color:</strong> {selectedItem.color}</p>
             <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
-            <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} />
-            <button onClick={handleBackClick}>Back to list</button>
-            <button onClick={() => deleteCar(selectedItem)}>Delete Car</button>
-            <button onClick={() => setEditCar(true)}>Edit Car</button>
+            <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width = "560px"/>
+            <button onClick={handleBackClick} className="back-button">Back to list</button>
+            <button onClick={() => deleteCar(selectedItem)} className="delete-button">Delete Car</button>
+            <button onClick={() => setEditCar(true)} className="edit-button">Edit Car</button>
+
             {editCar && (
                 <form onSubmit={handleEditSubmit} className="edit-form">
                     <label htmlFor="parameter">Edit Parameter:</label>
