@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { ItemsList } from './ItemsList';
@@ -7,13 +6,13 @@ import { Search } from './Search';
 import { ManageCars } from './ManageCars';
 import { About } from './About';
 import { Reviews } from './Reviews';
-import apiURL from '../api';
-import './nb.css';
 import {SelectedItem} from './SelectedItem'
+import apiURL from '../api';
+import './Style/nb.css';
 
 export const App = () => {
     const [items, setItems] = useState([]);
-    const [reviews, setReviews] = useState([]); // State for reviews
+    const [reviews, setReviews] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
     const [sortCriterion, setSortCriterion] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
@@ -31,6 +30,9 @@ export const App = () => {
             setItems([]);
         }
     }
+
+
+    // Fetch one Item
     async function fetchItem(itemId) {
         try {
             console.log(itemId)
@@ -46,7 +48,8 @@ export const App = () => {
         }
     }
     
-    // Add a car
+
+    // Add Car
     async function addCar(car) {
         try{
             await fetch(`http://localhost:3000/api/items`, {
@@ -67,7 +70,8 @@ export const App = () => {
         }
     }
 
-    // Delete a car
+
+    // Delete car
     async function deleteCar(car) {
         await fetch(`http://localhost:3000/api/items/${car.id}`, {
             method: 'DELETE',
@@ -79,6 +83,7 @@ export const App = () => {
         fetchItems();
     }
 
+    // Update Car
     async function updateCar(id, updatedData){
        try {
         const response = await fetch(`http://localhost:3000/api/items/${id}` ,{ 
@@ -99,6 +104,7 @@ export const App = () => {
     }
 }
 
+
     // Fetch reviews
     async function fetchReviews() {
         try {
@@ -110,6 +116,7 @@ export const App = () => {
             setReviews([]);
         }
     }
+
 
     // Add a new review
     async function addReview(newReview) {
@@ -126,29 +133,34 @@ export const App = () => {
         }
     }
 
+
+    // UseEffect Function
     useEffect(() => {
         fetchItems();
-        fetchReviews(); // Fetch reviews on component mount
+        fetchReviews();
     }, []);
 
+
+
+
+    // Handler Functions
     const handleItemClick = (item) => {
         setSelectedItem(item);
     };
-
     const handleBackClick = () => {
         setSelectedItem(null)
         fetchItems();
     };
-
     const handleSortChange = (e) => {
         setSortCriterion(e.target.value);
     };
-
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
     };
 
-    // Sort items function for the main inventory
+
+
+    // Sort Function
     const sortedItems = () => {
         if (!sortCriterion) return items;
 
@@ -162,6 +174,9 @@ export const App = () => {
         });
     };
 
+
+
+    //Router Component 
     return (
         <Router>
             <MainContent
@@ -188,6 +203,7 @@ export const App = () => {
     );
 };
 
+//Pages Component
 const MainContent = ({
     items,
     selectedItem,
@@ -219,8 +235,12 @@ const MainContent = ({
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
             </nav>
-            <SortDropdown conditionPath="/items" sortCriterion={sortCriterion} handleSortChange={handleSortChange} />
-
+            {location.pathname === "/items" && (
+                <div className="inventory-header-wrapper">
+                    <SortDropdown sortCriterion={sortCriterion} handleSortChange={handleSortChange} />
+                    <h1 className="inventory-title">Inventory</h1>
+                </div>
+            )}
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/items" element={
@@ -248,20 +268,19 @@ const MainContent = ({
     );
 };
 
-// Definition for SortDropdown component
-const SortDropdown = ({ conditionPath, sortCriterion, handleSortChange }) => {
-    const location = useLocation();
-    return location.pathname === conditionPath ? (
-        <div className="sort-container">
-            <label htmlFor="sort">Sort by:</label>
-            <select id="sort" onChange={handleSortChange} value={sortCriterion}>
-                <option value="">Select</option>
-                <option value="year">Year</option>
-                <option value="mileage">Mileage</option>
-                <option value="bhp">BHP</option>
-                <option value="raaminess">Raaminess</option>
-                <option value="price">Price</option>
-            </select>
-        </div>
-    ) : null;
-};
+
+
+//Dropdown for the Sorting
+const SortDropdown = ({ sortCriterion, handleSortChange }) => (
+    <div className="sort-container">
+        <label htmlFor="sort">Sort by:</label>
+        <select id="sort" onChange={handleSortChange} value={sortCriterion}>
+            <option value="">Select</option>
+            <option value="year">Year</option>
+            <option value="mileage">Mileage</option>
+            <option value="bhp">BHP</option>
+            <option value="raaminess">Raaminess</option>
+            <option value="price">Price</option>
+        </select>
+    </div>
+);

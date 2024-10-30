@@ -1,11 +1,10 @@
-/* Full-screen landing page with background image */
 .landing-page {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('./raamil.png'); /* Replace with the path to the generated image */
+    background-image: url('../Images/raamil.png'); 
     background-size: cover;
     background-position: center;
     color: #ffffff;
@@ -13,7 +12,6 @@
     position: relative;
 }
 
-/* Title and subtitle styling */
 .landing-title {
     font-size: 3rem;
     font-weight: bold;
@@ -27,7 +25,6 @@
     margin-bottom: 2rem;
 }
 
-/* Button styling */
 .enter-button {
     padding: 0.8rem 2rem;
     font-size: 1.2rem;

@@ -1,6 +1,5 @@
-/* Item.css */
 .car-card {
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff; 
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -20,12 +19,12 @@
   height: 160px;
   object-fit: cover;
   border-radius: 8px 8px 0 0;
-  background-color: #f5f5f5; /* Light grey background for image placeholder */
+  background-color: #f5f5f5;
 }
 
 .car-info {
   margin-top: 8px;
-  background-color: #ffffff; /* Ensure white background inside the card */
+  background-color: #ffffff;
 }
 
 .car-price {
@@ -41,5 +40,5 @@
   gap: 4px;
   font-size: 0.9em;
   color: #555;
-  background-color: #ffffff; /* Ensure white background inside the card */
+  background-color: #ffffff;
 }

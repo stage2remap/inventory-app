@@ -1,4 +1,3 @@
-// load environment variables from .env or elsewhere
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -31,29 +30,6 @@ app.use((error, req, res, next) => {
   if(res.statusCode < 400) res.status(500);
   res.send({error: error.message, name: error.name, message: error.message, table: error.table});
 });
-const { Review } = require('./models');
-
-// Route to fetch all reviews
-app.get('/api/reviews', async (req, res) => {
-  try {
-    const reviews = await Review.findAll();
-    res.json(reviews);
-  } catch (error) {
-    res.status(500).json({ error: 'Error fetching reviews' });
-  }
-});
-
-// Route to post a new review
-app.post('/api/reviews', async (req, res) => {
-  const { name, rating, comment } = req.body;
-  try {
-    const newReview = await Review.create({ name, rating, comment });
-    res.status(201).json(newReview);
-  } catch (error) {
-    res.status(500).json({ error: 'Error creating review' });
-  }
-});
-
 
 module.exports = app;
 

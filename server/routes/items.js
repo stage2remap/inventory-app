@@ -3,7 +3,6 @@ const router = express.Router();
 const { Items } = require("../models");
 const { body, validationResult } = require('express-validator');
 
-// Validation middleware for each field
 const validateItem = [
   body('color').optional().isAlpha().withMessage('Color must be a string'),
   body('year').optional().isInt().withMessage('Year must be an integer'),
@@ -17,7 +16,7 @@ const validateItem = [
   body('price').optional().isInt().withMessage('Price must be an integer'),
 ];
 
-
+//GET All Router
 router.get("/", async (req, res, next) => {
     try {
       const items = await Items.findAll();
@@ -27,6 +26,8 @@ router.get("/", async (req, res, next) => {
     }
   });
 
+
+  //GET One Router
   router.get("/:id", async (req, res, next) => {
     try {
       const item = await Items.findByPk(req.params.id);
@@ -36,28 +37,25 @@ router.get("/", async (req, res, next) => {
     }
   });
 
+
+  //POST Car Router
   router.post("/", validateItem, async (req, res, next) => {
     const errors = validationResult(req);
-  
+
     if (!errors.isEmpty()) {
-      // Send validation error messages if validation failed
       return res.status(400).json({ errors: errors.array() });
     }
-  
     try {
-      // Destructure car details from the request body
       const { color, year, mileage, make, model, bhp, raaminess, description, image, price } = req.body;
-  
-      // Create a new item entry
       const newItem = await Items.create({ color, year, mileage, make, model, bhp, raaminess, description, image, price });
-  
-      // Respond with the newly created item
       res.status(201).json(newItem);
     } catch (error) {
       next(error);
     }
   });
 
+
+  //DELETE Car Router
   router.delete("/:id", async (req,res, next) => {
     try{
       const deletedCar = await Items.findByPk(req.params.id);
@@ -70,13 +68,11 @@ router.get("/", async (req, res, next) => {
   })
 
 
-
-
+  //UPDATE Car Router
   router.put("/:id", validateItem, async (req, res, next) => {
     const errors = validationResult(req);
     
     if (!errors.isEmpty()) {
-      // Send validation error messages if validation failed
       return res.status(400).json({ errors: errors.array() });
     }
     

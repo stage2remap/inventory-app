@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LandingPage.css';
+import './Style/LandingPage.css';
 
 export const LandingPage = () => {
     const navigate = useNavigate();
 
     const handleEnterClick = () => {
-        navigate('/items'); // Redirect to the items list page
+        navigate('/items');
     };
 
     return (

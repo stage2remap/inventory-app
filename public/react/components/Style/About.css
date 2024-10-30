@@ -1,0 +1,31 @@
+.about-page {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../Images/About.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow-y: auto;
+}
+
+.about-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000000; 
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff, 0 0 40px #00ccff; 
+    margin-bottom: 0.5rem;
+}
+
+.about-description {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #ffffff; 
+    text-shadow: 0 0 8px #00ccff, 0 0 16px #00ccff, 0 0 24px #00ccff; 
+    max-width: 800px;
+}
