@@ -1,0 +1,88 @@
+/* General container for the basket */
+.basket-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Individual item container */
+.basket-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Content within each item */
+.basket-item-content {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes the full width */
+}
+
+/* Image styling for basket items */
+.basket-item img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px; /* Space between image and details */
+}
+
+/* Details section for basket items */
+.basket-item-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Ensures details section expands to fill available space */
+    align-items: center;
+}
+
+/* Styling for the remove button */
+.remove-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.remove-button:hover {
+    background-color: #c0392b;
+}
+
+/* Basket summary section */
+.basket-summary {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Purchase button styling */
+.purchase-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.purchase-button:hover {
+    background-color: #45a049;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { ItemsList } from './ItemsList';
 import './Style/SelectedItem.css';
 
-export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick, selectedItem, handleBackClick }) => {
+export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick, selectedItem, handleBackClick , addToBasket}) => {
     
     const filteredItems = items.filter(item =>
         item.make.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -11,8 +11,8 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
         item.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
     const renderFireRating = (rating) => {
-        return Array.from({ length: 5 }, (_, i) => (
-            <span key={i} className={`fire-icon ${i < rating ? 'filled' : ''}`}>&#128293;</span>
+        return Array.from({ length: rating }, (_, i) => (
+            <span key={i} >&#128293;</span>
         ));
     };
 
@@ -43,6 +43,7 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
                     <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
                     <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width = "560px"/>
                     <button onClick={handleBackClick} className = "back-button">Back to list</button>
+                    <button onClick={() => addToBasket(selectedItem)} className="add-button">Add to Basket</button>
                 </div>
             ) : (
                 <ItemsList items={filteredItems} onItemClick={handleItemClick} />
