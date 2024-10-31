@@ -254,7 +254,7 @@ const MainContent = ({
                 <Link to="/manage">Manage Cars</Link>
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
-                <Link to="/basket">Basket ({basket.length})</Link> {/* Shows item count */}
+                <Link to="/basket">  🛒 {basket.length > 0 && basket.length}</Link> {/* Shows item count */}
 
             </nav>
             {location.pathname === "/items" && (
