@@ -5,9 +5,29 @@ module.exports = {
     {"name" : "Tobasco", "image": "https://64.media.tumblr.com/1564fcf74adc3fe6542c34b6a1f05de1/tumblr_na9lew0bNS1tha1vgo1_r1_250.gif"}
   ],
   reviews: [
-    { name: 'George Rodgers', rating: 5, comment: 'BLACK LAMBORGHINI, BLACK LAMBORGHINI, PEOPLE I KNOW YOU SEE ME IN MY LAMBORGHINI!' },
+    { name: 'C.S. Venkat', rating: 2, comment: 'Can not believe our training budget went to this.' },
+    { name: 'KSI', rating: 5, comment: 'FROM THE SCREEN, TO THE PEN, TO THE RING, TO THE RAAAMI MOTORS' },
     { name: 'Benjamin "Raami" Watkins', rating: 4, comment: 'Active people, raami ghaddis, what more could a young brother patrolling the streets of BD need, recommended to all my chahchas!!' },
-    { name: 'Haami Nyangibo', rating: 3, comment: 'Average experience overall, needs more workshop space and less useless bruddas.' }
+    { name: 'Kieran', rating: 4, comment: 'Had a great time, [insert unfunny joke here], hahahhahaha you get me, you need me to explain????.' },
+    { name: 'Captain Price', rating: 1, comment: 'Awful experience from Zain, was meant to be seen by Mike, but Zain was an awful awful salesman' },
+    { name: 'Gregory House MD', rating: 4, comment: 'Decent Experience, Zain did his best, not his fault that the website is not up to par' },
+    { name: 'Captain Price', rating: 2, comment: 'Met Zain again, was not his fault in regards to the website avaliable, still feel like Michael would have been better for me' },
+    { name: 'Vlad III (Dracula)', rating: 5, comment: 'Verreh guwd serwice, highesst lewel of prowtection against any forms of cowmbat' },
+    { name: 'JME', rating: 4, comment: 'I got a black ski mask but i dont ski, dash a man of p, if one of you wanna violate me get a punch in the face with my front door key, box in the face with my backdoor key, box in the mouth with the fob that i use to login in to my HSBC' },
+    { name: 'Waki', rating: 5, comment: 'OI OI OI what can i say cuz, absolutely smashed it yaara, pattaynaaaah.' },
+    { name: 'Sid', rating: 3, comment: 'Took the G benz to antartica, felt right at home back in the ice age. Made my eyes a bit sore with th glare however.' },
+    { name: 'Audemars Piguet', rating: 1, comment: 'The friend of an opp is an opp.' },
+    { name: 'CR7', rating: 5, comment: 'Unbelievable service, all I can say is SIUUUUUUUUUUUUUUU.' },
+    { name: 'Obama', rating: 5, comment: 'Had a great service from Zain and Mike, really took care of me :). Can not believe they sell tanks.' },
+    { name: 'Ronald McDonald', rating: 4, comment: '@Obama, canny believe it either, yer absolutely roight, great great service, realleh reallh enjooyin meh new heated seats .' },
+    { name: 'Keith', rating: 1, comment: '@Ronald Mcdonald, fix your ice cream machines, iv had to go to burger king.' },
+    { name: 'PC Wassim', rating: 1, comment: 'DO NOT BUY FROM HERE. PRICES ARE SO LOW LOOKS VERY DODGY' },
+    { name: 'Nigel', rating: 3, comment: 'Outstanding service from Benjamin, can not say the same for the rest.'},
+    { name: 'Your nan', rating: 4, comment: 'Raaami Ghaddis, Raami Ghaddis, absolutely sorted me out with a gorgeous whippage.' },
+
+
+
+
   ],
   items: [
       {
@@ -15,7 +35,7 @@ module.exports = {
         year: 2022,
         mileage: 12000,
         make: "Audi",
-        model: "RS3",
+        model: "RSTREE",
         bhp: 500,
         raaminess: 5,
         description: "High-performance compact beast with incredible power, stage 2 tuned to perfection. Aggressive handling and luxurious interior.",
@@ -138,7 +158,7 @@ module.exports = {
         model: "Yaaarais",
         bhp: 50,
         raaminess: 5,
-        description: "Yaara this yaaris moves cuz, 60 miles per hour second gear, fast as f***.",
+        description: "Yaara this yaaris moves cuz, 60 miles per hour second gear, Raami Gaddi.",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj75INosInz3f91WGwzrcZWOOmjOrEZbXXdA&s",
         price: 850000
       },
@@ -159,7 +179,7 @@ module.exports = {
         year: 2006,
         mileage: 1000000,
         make: "Honda BRAAT BRAAT",
-        model: "Jizz",
+        model: "Jazz",
         bhp: 25,
         raaminess: 5,
         description: "The peak of UberEats. This bespoke vehicle is meant for only the most serious of Chaudaries going on late night missions, PATAYNAAAA YAARA",
