@@ -6,7 +6,7 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
     const [newValue, setNewValue] = useState("");
 
     const parameters = [
-        { label: "Color", value: "color" },
+        { label: "Colour", value: "color" },
         { label: "Year", value: "year" },
         { label: "Mileage", value: "mileage" },
         { label: "Make", value: "make" },
@@ -41,7 +41,7 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
             <p><strong>Raaminess:</strong> {renderFireRating(selectedItem.raaminess)}</p>
             <p><strong>Description:</strong> {selectedItem.description}</p>
             <p><strong>Price:</strong> £{selectedItem.price}</p>
-            <p><strong>Color:</strong> {selectedItem.color}</p>
+            <p><strong>Colour:</strong> {selectedItem.color}</p>
             <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
             <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width = "560px"/>
             <button onClick={handleBackClick} className="back-button">Back to list</button>

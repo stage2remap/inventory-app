@@ -39,7 +39,7 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
                     <p><strong>Raaminess:</strong> {renderFireRating(selectedItem.raaminess)}</p>
                     <p><strong>Description:</strong> {selectedItem.description}</p>
                     <p><strong>Price:</strong> £{selectedItem.price}</p>
-                    <p><strong>Color:</strong> {selectedItem.color}</p>
+                    <p><strong>Colour:</strong> {selectedItem.color}</p>
                     <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
                     <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width = "560px"/>
                     <button onClick={handleBackClick} className = "back-button">Back to list</button>
