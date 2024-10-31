@@ -25,8 +25,8 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
         fetchItem(selectedItem.id);
     };
     const renderFireRating = (rating) => {
-        return Array.from({ length: 5 }, (_, i) => (
-            <span key={i} className={`fire-icon ${i < rating ? 'filled' : ''}`}>&#128293;</span>
+        return Array.from({ length: rating }, (_, i) => (
+            <span key={i} >&#128293;</span>
         ));
     };
 
