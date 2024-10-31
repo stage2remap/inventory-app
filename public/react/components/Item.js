@@ -2,11 +2,8 @@ import React from 'react';
 import './Style/Item.css';
 
 export const Item = ({ item }) => {
-  const renderFireRating = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-        <span key={i} className={`fire-icon ${i < rating ? 'filled' : ''}`}>&#128293;</span>
-    ));
-};
+
+
 
   return (
     <div className="car-card">
