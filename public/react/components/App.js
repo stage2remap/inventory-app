@@ -9,6 +9,7 @@ import { Reviews } from './Reviews';
 import {SelectedItem} from './SelectedItem'
 import {Basket} from './Basket'
 import apiURL from '../api';
+import logo from './Images/RaamiLogo.jpg';
 import './Style/nb.css';
 
 export const App = () => {
@@ -250,12 +251,17 @@ const MainContent = ({
     return (
         <div className={shouldUseGreyBackground ? 'grey-background' : ''}>
             <nav>
+                <Link to="/" className="logo-link">
+                    <img src={logo} alt="Raami Whips Logo" className="logo-image" />
+                </Link>
+                
                 <Link to="/items">Inventory</Link>
                 <Link to="/search">Search</Link>
                 <Link to="/manage">Manage Cars</Link>
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
                 <Link to="/basket">   🛒  {basket.length}</Link> {/* Shows item count */}
+                
 
             </nav>
             {location.pathname === "/items" && (
