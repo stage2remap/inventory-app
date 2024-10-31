@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Style/ManageCars.css';
 
-export const ManageCars = ({ addCar }) => {
+export const ManageCars = ({ addCar, fetchItems }) => {
     const [color, setColor] = useState("");
     const [year, setYear] = useState("");
     const [mileage, setMileage] = useState("");
@@ -30,6 +30,8 @@ export const ManageCars = ({ addCar }) => {
         };
 
         await addCar(newCar);
+        alert("Car added successfully!")
+        fetchItems()
 
         setColor("");
         setYear("");

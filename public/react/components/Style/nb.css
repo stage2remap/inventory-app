@@ -107,10 +107,10 @@ body {
 
 nav {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: rgba(104, 106, 108, 0.9); 
+    align-items: center; /* Aligns items in the center vertically */
+    justify-content: space-between; /* Keeps the logo at the far left */
+    padding: 10px 20px; /* Reduced padding for a more compact navbar */
+    background-color: rgba(104, 106, 108, 0.9);
     color: black;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     font-size: 16px;
@@ -160,4 +160,16 @@ nav a:hover {
     left: 0; 
     display: flex;
     align-items: center;
+}
+
+
+
+.logo-link {
+    margin-right: 100px; /* Space between the logo and the rest of the navbar links */
+}
+
+.logo-image {
+    width: 50px; /* Adjust the size as needed */
+    height: auto;
+    display: inline-block;
 }

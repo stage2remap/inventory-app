@@ -1,9 +1,5 @@
 module.exports = {
-  sauces: [
-    {"name" : "Sriracha", "image" : "https://64.media.tumblr.com/12cd128183713bf928bda87a24f22487/tumblr_ne6jee85PM1tha1vgo1_250.gif"},
-    {"name" : "Franks", "image": "https://cdn.streamelements.com/uploads/1887a0da-3642-4795-b5f5-774d5b377e52.gif"},
-    {"name" : "Tobasco", "image": "https://64.media.tumblr.com/1564fcf74adc3fe6542c34b6a1f05de1/tumblr_na9lew0bNS1tha1vgo1_r1_250.gif"}
-  ],
+  
   reviews: [
     { name: 'C.S. Venkat', rating: 2, comment: 'Can not believe our training budget went to this.' },
     { name: 'KSI', rating: 5, comment: 'FROM THE SCREEN, TO THE PEN, TO THE RING, TO THE RAAAMI MOTORS' },
