@@ -40,7 +40,6 @@
     font-family: Arial, sans-serif;
 }
 
-/* General button styling */
 .selected-item-container button {
     padding: 12px 20px;
     margin: 10px 5px;
@@ -52,7 +51,6 @@
     transition: background-color 0.3s ease;
 }
 
-/* Back to list button */
 .selected-item-container .back-button {
     background-color: #007bff;
     color: white;
@@ -62,7 +60,6 @@
     background-color: #0056b3;
 }
 
-/* Delete Car button */
 .selected-item-container .delete-button {
     background-color: #e74c3c;
     color: white;
@@ -72,7 +69,6 @@
     background-color: #c0392b;
 }
 
-/* Edit Car button */
 .selected-item-container .edit-button {
     background-color: #27ae60;
     color: white;
