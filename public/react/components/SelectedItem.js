@@ -24,6 +24,12 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
         setNewValue(""); 
         fetchItem(selectedItem.id);
     };
+    const renderFireRating = (rating) => {
+        return Array.from({ length: 5 }, (_, i) => (
+            <span key={i} className={`fire-icon ${i < rating ? 'filled' : ''}`}>&#128293;</span>
+        ));
+    };
+
 
     return (
         <div className="selected-item-container">
@@ -32,15 +38,16 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
             <p><strong>Year:</strong> {selectedItem.year}</p>
             <p><strong>Mileage:</strong> {selectedItem.mileage}</p>
             <p><strong>BHP:</strong> {selectedItem.bhp}</p>
-            <p><strong>Raaminess:</strong> {selectedItem.raaminess}/5</p>
+            <p><strong>Raaminess:</strong> {renderFireRating(selectedItem.raaminess)}</p>
             <p><strong>Description:</strong> {selectedItem.description}</p>
             <p><strong>Price:</strong> £{selectedItem.price}</p>
             <p><strong>Color:</strong> {selectedItem.color}</p>
             <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
-            <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} />
-            <button onClick={handleBackClick}>Back to list</button>
-            <button onClick={() => deleteCar(selectedItem)}>Delete Car</button>
-            <button onClick={() => setEditCar(true)}>Edit Car</button>
+            <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width = "560px"/>
+            <button onClick={handleBackClick} className="back-button">Back to list</button>
+            <button onClick={() => deleteCar(selectedItem)} className="delete-button">Delete Car</button>
+            <button onClick={() => setEditCar(true)} className="edit-button">Edit Car</button>
+
             {editCar && (
                 <form onSubmit={handleEditSubmit} className="edit-form">
                     <label htmlFor="parameter">Edit Parameter:</label>
