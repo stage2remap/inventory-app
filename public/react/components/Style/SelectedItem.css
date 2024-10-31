@@ -81,3 +81,14 @@
 .selected-item-container .edit-button:hover {
     background-color: #1e8449;
 }
+
+/* Fire rating icons */
+.fire-icon {
+    font-size: 1.5em;
+    color: #ddd; /* Unfilled fire color */
+    margin-right: 2px;
+}
+
+.fire-icon.filled {
+    color: #ff4500; /* Filled fire color */
+}

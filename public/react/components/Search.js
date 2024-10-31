@@ -10,6 +10,12 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
         item.year.toString().includes(searchQuery) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
+    const renderFireRating = (rating) => {
+        return Array.from({ length: 5 }, (_, i) => (
+            <span key={i} className={`fire-icon ${i < rating ? 'filled' : ''}`}>&#128293;</span>
+        ));
+    };
+
 
     return (
         <div>
@@ -30,13 +36,13 @@ export const Search = ({ items, searchQuery, handleSearchChange, handleItemClick
                     <p><strong>Year:</strong> {selectedItem.year}</p>
                     <p><strong>Mileage:</strong> {selectedItem.mileage}</p>
                     <p><strong>BHP:</strong> {selectedItem.bhp}</p>
-                    <p><strong>Raaminess:</strong> {selectedItem.raaminess}/5</p>
+                    <p><strong>Raaminess:</strong> {renderFireRating(selectedItem.raaminess)}</p>
                     <p><strong>Description:</strong> {selectedItem.description}</p>
                     <p><strong>Price:</strong> £{selectedItem.price}</p>
                     <p><strong>Color:</strong> {selectedItem.color}</p>
                     <p><strong>Date Added:</strong> {new Date(selectedItem.createdAt).toLocaleDateString()}</p>
-                    <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} />
-                    <button onClick={handleBackClick}>Back to list</button>
+                    <img src={selectedItem.image} alt={`${selectedItem.make} ${selectedItem.model}`} width = "560px"/>
+                    <button onClick={handleBackClick} className = "back-button">Back to list</button>
                 </div>
             ) : (
                 <ItemsList items={filteredItems} onItemClick={handleItemClick} />

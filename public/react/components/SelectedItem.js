@@ -24,6 +24,12 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
         setNewValue(""); 
         fetchItem(selectedItem.id);
     };
+    const renderFireRating = (rating) => {
+        return Array.from({ length: 5 }, (_, i) => (
+            <span key={i} className={`fire-icon ${i < rating ? 'filled' : ''}`}>&#128293;</span>
+        ));
+    };
+
 
     return (
         <div className="selected-item-container">
@@ -32,7 +38,7 @@ export const SelectedItem = ({ selectedItem, handleBackClick, deleteCar, updateC
             <p><strong>Year:</strong> {selectedItem.year}</p>
             <p><strong>Mileage:</strong> {selectedItem.mileage}</p>
             <p><strong>BHP:</strong> {selectedItem.bhp}</p>
-            <p><strong>Raaminess:</strong> {selectedItem.raaminess}/5</p>
+            <p><strong>Raaminess:</strong> {renderFireRating(selectedItem.raaminess)}</p>
             <p><strong>Description:</strong> {selectedItem.description}</p>
             <p><strong>Price:</strong> £{selectedItem.price}</p>
             <p><strong>Color:</strong> {selectedItem.color}</p>
