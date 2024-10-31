@@ -1,25 +1,25 @@
 const request = require('supertest');
-const app = require('../app'); // Replace with the path to your Express app
+const app = require('../app');
 
 describe('Items API', () => {
     let createdItemId;
 
-    // Test for GET /items
-    it('should get all items', async () => {
+    // Test GET /items
+    test('should get all items', async () => {
         const response = await request(app).get('/api/items');
         expect(response.status).toBe(200);
         expect(Array.isArray(response.body)).toBe(true);
     });
 
-    // Test for GET /items/:id
-    it('should get a single item by ID', async () => {
-        const response = await request(app).get('/api/items/1'); // Replace with a valid ID in your database
+    // Test GET /items/:id
+    test('should get a single item by ID', async () => {
+        const response = await request(app).get('/api/items/1'); 
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('id', 1);
     });
 
-    // Test for POST /items
-    it('should create a new item', async () => {
+    // Test POST /items
+    test('should create a new item', async () => {
         const newItem = {
             color: 'Blue',
             year: 2021,
@@ -40,11 +40,11 @@ describe('Items API', () => {
 
         expect(response.status).toBe(201);
         expect(response.body).toHaveProperty('id');
-        createdItemId = response.body.id; // Store ID for further tests
+        createdItemId = response.body.id; 
     });
 
-    // Test for PUT /items/:id
-    it('should update an existing item', async () => {
+    // Test PUT /items/:id
+    test('should update an existing item', async () => {
         const updateData = {
             color: 'Red',
             mileage: 14000
@@ -60,14 +60,14 @@ describe('Items API', () => {
         expect(response.body).toHaveProperty('mileage', 14000);
     });
 
-    // Test for DELETE /items/:id
-    it('should delete an item', async () => {
+    // Test  DELETE /items/:id
+    test('should delete an item', async () => {
         const response = await request(app).delete(`/api/items/${createdItemId}`);
         expect(response.status).toBe(200);
         expect(response.body).toHaveProperty('id', createdItemId);
 
-        // Verify the item is deleted by attempting to get it again
+       
         const getResponse = await request(app).get(`/api/items/${createdItemId}`);
-        expect(getResponse.status).toBe(404); // Assuming your API returns 404 if not found
+        expect(getResponse.status).toBe(404); 
     });
 });

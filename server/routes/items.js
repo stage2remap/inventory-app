@@ -32,7 +32,7 @@ router.get("/", async (req, res, next) => {
     try {
       const item = await Items.findByPk(req.params.id);
       if (!item) {
-        return res.status(404).json({ message: "Item not found" }); // Return 404 if item is not found
+        return res.status(404).json({ message: "Item not found" }); 
     }
       res.status(200).send(item);
     } catch (error) {
