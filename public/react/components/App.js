@@ -7,6 +7,7 @@ import { ManageCars } from './ManageCars';
 import { About } from './About';
 import { Reviews } from './Reviews';
 import {SelectedItem} from './SelectedItem'
+import {Basket} from './Basket'
 import apiURL from '../api';
 import './Style/nb.css';
 
@@ -17,6 +18,7 @@ export const App = () => {
     const [sortCriterion, setSortCriterion] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [editCar, setEditCar] = useState(false)
+    const [basket, setBasket] = useState([]); 
 
 
     // Fetch items
@@ -133,6 +135,15 @@ export const App = () => {
         }
     }
 
+    const addToBasket = (item) => {
+        setBasket((prevBasket) => [...prevBasket, item]);
+        alert(`${item.make} - ${item.model} added to basket`);
+    };
+
+    const removeFromBasket = (itemId) => {
+        setBasket((prevBasket) => prevBasket.filter(item => item.id !== itemId));
+    };
+
 
     // UseEffect Function
     useEffect(() => {
@@ -198,6 +209,11 @@ export const App = () => {
                 setEditCar = {setEditCar} 
                 useEffect = {useEffect}    
                 fetchItem = {fetchItem}
+                addToBasket={addToBasket} 
+                basket={basket} 
+                setBasket = {setBasket}
+                removeFromBasket={removeFromBasket}
+                
             />
         </Router>
     );
@@ -221,7 +237,11 @@ const MainContent = ({
     updateCar,
     editCar,
     setEditCar,
-    fetchItem
+    fetchItem,
+    basket,
+    setBasket,
+    removeFromBasket,
+    addToBasket
 }) => {
     const location = useLocation();
     const shouldUseGreyBackground = ["/items", "/search", "/manage", "/reviews"].includes(location.pathname);
@@ -234,6 +254,8 @@ const MainContent = ({
                 <Link to="/manage">Manage Cars</Link>
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
+                <Link to="/basket">Basket ({basket.length})</Link> {/* Shows item count */}
+
             </nav>
             {location.pathname === "/items" && (
                 <div className="inventory-header-wrapper">
@@ -258,11 +280,13 @@ const MainContent = ({
                         handleItemClick={handleItemClick}
                         selectedItem={selectedItem}
                         handleBackClick={handleBackClick}
+                        addToBasket={addToBasket}
                     />
                 } />
                 <Route path="/manage" element={<ManageCars addCar={addCar} />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/reviews" element={<Reviews reviews={reviews} addReview={addReview} />} />
+                <Route path="/basket" element={<Basket basket={basket} removeFromBasket={removeFromBasket} setBasket ={setBasket}/>} />
             </Routes>
         </div>
     );
