@@ -4,12 +4,9 @@ const {sequelize} = require('./db');
 const {Items, Review} = require('./models');
 
 const seed = async () => {
-
     try {
-        // drop and recreate tables per model definitions
         await sequelize.sync({ force: true });
-    
-        // insert data
+
         await Promise.all(items.map(item => Items.create(item)));
         await Promise.all(reviews.map(item => Review.create(item)));
 
