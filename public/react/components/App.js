@@ -9,6 +9,7 @@ import { Reviews } from './Reviews';
 import {SelectedItem} from './SelectedItem'
 import {Basket} from './Basket'
 import apiURL from '../api';
+import logo from './Images/RaamiLogo.jpg';
 import './Style/nb.css';
 
 export const App = () => {
@@ -63,7 +64,6 @@ export const App = () => {
         });
         if(response.ok){
             fetchItems();
-            alert("Car added successfully!")
         }else{
             alert("Error in adding car")
         }}
@@ -207,7 +207,8 @@ export const App = () => {
                 updateCar = {updateCar}
                 editCar = {editCar}
                 setEditCar = {setEditCar} 
-                useEffect = {useEffect}    
+                useEffect = {useEffect}  
+                fetchItems={fetchItems}  
                 fetchItem = {fetchItem}
                 addToBasket={addToBasket} 
                 basket={basket} 
@@ -237,6 +238,7 @@ const MainContent = ({
     updateCar,
     editCar,
     setEditCar,
+    fetchItems,
     fetchItem,
     basket,
     setBasket,
@@ -249,12 +251,17 @@ const MainContent = ({
     return (
         <div className={shouldUseGreyBackground ? 'grey-background' : ''}>
             <nav>
+                <Link to="/" className="logo-link">
+                    <img src={logo} alt="Raami Whips Logo" className="logo-image" />
+                </Link>
+                
                 <Link to="/items">Inventory</Link>
                 <Link to="/search">Search</Link>
                 <Link to="/manage">Manage Cars</Link>
                 <Link to="/about">About Us</Link>
                 <Link to="/reviews">Reviews</Link>
                 <Link to="/basket">   🛒  {basket.length}</Link> {/* Shows item count */}
+                
 
             </nav>
             {location.pathname === "/items" && (
@@ -283,7 +290,7 @@ const MainContent = ({
                         addToBasket={addToBasket}
                     />
                 } />
-                <Route path="/manage" element={<ManageCars addCar={addCar} />} />
+                <Route path="/manage" element={<ManageCars addCar={addCar} fetchItems = {fetchItems} />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/reviews" element={<Reviews reviews={reviews} addReview={addReview} />} />
                 <Route path="/basket" element={<Basket basket={basket} removeFromBasket={removeFromBasket} setBasket ={setBasket}/>} />
@@ -294,7 +301,7 @@ const MainContent = ({
 
 
 
-//Dropdown for the Sorting
+//Dropdown for Sorting
 const SortDropdown = ({ sortCriterion, handleSortChange }) => (
     <div className="sort-container">
         <label htmlFor="sort">Sort by:</label>

@@ -12,9 +12,9 @@ describe('Reviews API', () => {
     // Test  POST /reviews
     test('should create a new review', async () => {
         const newReview = {
-            name: 'John Doe',
+            name: 'Lily Phillips',
             rating: 5,
-            comment: 'This is an excellent service!'
+            comment: 'Amazing selection of cars!'
         };
 
         const response = await request(app)
@@ -24,15 +24,15 @@ describe('Reviews API', () => {
 
         expect(response.status).toBe(201);
         expect(response.body).toHaveProperty('id');
-        expect(response.body).toHaveProperty('name', 'John Doe');
+        expect(response.body).toHaveProperty('name', 'Lily Phillips');
         expect(response.body).toHaveProperty('rating', 5);
-        expect(response.body).toHaveProperty('comment', 'This is an excellent service!');
+        expect(response.body).toHaveProperty('comment', 'Amazing selection of cars!');
     });
 
     // Test  POST /reviews with missing field
     test('should return 400 when required fields are missing', async () => {
         const incompleteReview = {
-            name: 'John Doe'
+            name: 'Lily Phillips'
         };
     
         const response = await request(app)
