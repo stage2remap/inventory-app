@@ -28,7 +28,7 @@ export const Basket = ({ basket, removeFromBasket, setBasket }) => {
                         </div>
                     ))}
                     <div className="basket-summary">
-                        <h3>Total Price: £{basket.reduce((total, item) => total + item.price, 0).toFixed(2)}</h3>
+                        <h3>Total Price: £{totalPrice}</h3>
                         <button onClick={() =>handlePurchase()} className="purchase-button">Purchase</button>
                     </div>
                 </>
