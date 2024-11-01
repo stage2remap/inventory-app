@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // api router
+app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/api', require('./routes'));
 
 // 404 handler
